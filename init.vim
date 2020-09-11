@@ -1,4 +1,3 @@
-syntax on
 
 set guicursor=
 set noshowmatch
@@ -109,10 +108,11 @@ nnoremap <Leader>- :vertical resize -5<CR>
 nnoremap <Leader>ee oif err != nil {<CR>log.Fatalf("%+v\n", err)<CR>}<CR><esc>kkI<esc>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
-nnoremap <leader>vwm :colorscheme desertEx<bar>:set background=dark<CR>
+nnoremap <leader>vl :colorscheme zenburn<bar>:set background=dark<CR>
+nnoremap <leader>vll :colorscheme gruvbox<bar>:set background=dark<CR>
+nnoremap <leader>vlll :colorscheme horizon<bar>:set background=dark<CR>
 vnoremap X "_d
 inoremap <C-c> <esc>
-
 
 
 function! s:check_back_space() abort
