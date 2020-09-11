@@ -50,7 +50,9 @@ Plug 'morhetz/gruvbox'
 Plug 'phanviet/vim-monokai-pro'
 Plug 'flazz/vim-colorschemes'
 Plug 'ntk148v/vim-horizon'
-Plug 'neovim/nvim-lspconfig'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'wakatime/vim-wakatime'
+Plug 'hugolgst/vimsence'
 call plug#end()
 
 let g:go_fmt_command = "goimports"
@@ -111,11 +113,31 @@ nnoremap <leader>vwm :colorscheme desertEx<bar>:set background=dark<CR>
 vnoremap X "_d
 inoremap <C-c> <esc>
 
+
+
 function! s:check_back_space() abort
     let col = col('.') - 1
     return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
+
+func GoCoC()
+    :CocEnable
+    inoremap <buffer> <silent><expr> <TAB>
+                \ pumvisible() ? "\<C-n>" :
+                \ <SID>check_back_space() ? "\<TAB>" :
+                \ coc#refresh()
+
+    inoremap <buffer> <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+    inoremap <buffer> <silent><expr> <C-space> coc#refresh()
+
+    nmap <buffer> <leader>gd <Plug>(coc-definition)
+    nmap <buffer> <leader>gy <Plug>(coc-type-definition)
+    nmap <buffer> <leader>gi <Plug>(coc-implementation)
+    nmap <buffer> <leader>gr <Plug>(coc-references)
+    nmap <buffer> <leader>rr <Plug>(coc-rename)
+    nnoremap <buffer> <leader>cr :CocRestart
+endfun
 
 fun! TrimWhitespace()
     let l:save = winsaveview()
@@ -124,3 +146,5 @@ fun! TrimWhitespace()
 endfun
 
 autocmd BufWritePre * :call TrimWhitespace()
+
+autocmd FileType js,ts,cpp,cxx,h,hpp,c :call GoCoc()
