@@ -1,14 +1,14 @@
-export ZSH="$HOME/.oh-my-zsh"
+export ZSH="/home/kyle/.oh-my-zsh"
 
-ZSH_THEME="robbyrussell"
+ZSH_THEME="alanpeabody"
 
-plugins=(
-    git
-    dotenv
-)
-
-export EDITOR=/usr/bin/vim
-alias projects="cd ~/Projects"
-alias pebblo="cd ~/Projects/Pebblo"
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
+
+alias vim="nvim"
+alias projects="cd /mnt/d/Projects"
+alias pebblo="cd /mnt/d/Projects/Pebblo"
+alias api="pebblo && cd /API/core"
+alias py="python3"
+alias cls="clear"
