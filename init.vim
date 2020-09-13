@@ -53,6 +53,7 @@ Plug 'ntk148v/vim-horizon'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'wakatime/vim-wakatime'
 Plug 'hugolgst/vimsence'
+Plug 'joshdick/onedark.vim'
 call plug#end()
 
 let g:go_fmt_command = "goimports"
@@ -109,7 +110,7 @@ nnoremap <Leader>- :vertical resize -5<CR>
 nnoremap <Leader>ee oif err != nil {<CR>log.Fatalf("%+v\n", err)<CR>}<CR><esc>kkI<esc>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
-nnoremap <leader>vl :colorscheme zenburn<bar>:set background=dark<CR>
+nnoremap <leader>vl :colorscheme onedark<bar>:set background=dark<CR>
 nnoremap <leader>vll :colorscheme gruvbox<bar>:set background=dark<CR>
 nnoremap <leader>vlll :colorscheme horizon<bar>:set background=dark<CR>
 vnoremap X "_d
