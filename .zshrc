@@ -1,4 +1,4 @@
-export ZSH="/home/kyle/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="alanpeabody"
 
@@ -12,3 +12,8 @@ alias pebblo="cd /mnt/d/Projects/Pebblo"
 alias api="pebblo && cd /API/core"
 alias py="python3"
 alias cls="clear"
+
+
+export GOROOT="/usr/local/go"
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
