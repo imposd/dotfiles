@@ -46,14 +46,12 @@ Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-endwise'
-Plug 'morhetz/gruvbox'
+Plug 'sainnhe/gruvbox-material'
 Plug 'phanviet/vim-monokai-pro'
 Plug 'flazz/vim-colorschemes'
-Plug 'ntk148v/vim-horizon'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'wakatime/vim-wakatime'
 Plug 'hugolgst/vimsence'
-Plug 'joshdick/onedark.vim'
 Plug 'HansPinckaers/ncm2-jedi'
 Plug 'davidhalter/jedi-vim'
 call plug#end()
@@ -86,15 +84,19 @@ let g:jedi#popup_on_dot = 0
 let g:jedi#completions_command = ""
 let g:jedi#show_call_signatures = "1"
 
-" horizon shit vvvv
-" colorscheme horizon
-" horizon shit vvvv
-" highlight Pmenu ctermbg=111217 guibg=#111217
-" vvv comment this out if i wanna use horizon
+let g:gruvbox_contrast_dark = 'hard'
+if exists('+termguicolors')
+      let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+      let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+let g:gruvbox_invert_selection='0'
+
 colorscheme gruvbox
 set background=dark
-" horizon shit vvvv
-" let g:lightline = {'colorscheme' : 'horizon'}
+
+let g:lightline = {
+      \ 'colorscheme': 'monokai_pro',
+      \ }
 
 if executable('rg')
     let g:rg_derive_root='true'
@@ -123,9 +125,6 @@ nnoremap <Leader>- :vertical resize -5<CR>
 nnoremap <Leader>ee oif err != nil {<CR>log.Fatalf("%+v\n", err)<CR>}<CR><esc>kkI<esc>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
-nnoremap <leader>vl :colorscheme onedark<bar>:set background=dark<CR>
-nnoremap <leader>vll :colorscheme gruvbox<bar>:set background=dark<CR>
-nnoremap <leader>vlll :colorscheme horizon<bar>:set background=dark<CR>
 vnoremap X "_d
 inoremap <C-c> <esc>
 
