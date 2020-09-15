@@ -54,6 +54,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'wakatime/vim-wakatime'
 Plug 'hugolgst/vimsence'
 Plug 'joshdick/onedark.vim'
+Plug 'HansPinckaers/ncm2-jedi'
+Plug 'davidhalter/jedi-vim'
 call plug#end()
 
 let g:go_fmt_command = "goimports"
@@ -72,6 +74,17 @@ let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
 let g:go_highlight_variable_declarations = 1
 let g:go_highlight_variable_assignments = 1
+
+let ncm2#popup_delay = 5
+let ncm2#complete_length = [[1, 1]]
+let g:ncm2#matcher = 'substrfuzzy'
+let g:jedi#auto_initialization = 1
+let g:jedi#completions_enabled = 0
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#smart_auto_mappings = 0
+let g:jedi#popup_on_dot = 0
+let g:jedi#completions_command = ""
+let g:jedi#show_call_signatures = "1"
 
 " horizon shit vvvv
 " colorscheme horizon
@@ -149,4 +162,4 @@ endfun
 
 autocmd BufWritePre * :call TrimWhitespace()
 
-autocmd FileType js,ts,cpp,cxx,h,hpp,c :call GoCoc()
+autocmd FileType js,py,ts,cpp,cxx,h,hpp,c :call GoCoc()
