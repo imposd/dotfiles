@@ -12,7 +12,8 @@ alias pebblo="cd /mnt/d/Projects/Pebblo"
 alias api="pebblo && cd /API/core"
 alias py="python3"
 alias cls="clear"
-
+alias pp="cd $HOME/python"
+alias lg="lazygit"
 
 export GOROOT="/usr/local/go"
 export GOPATH="$HOME/go"

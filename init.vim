@@ -31,13 +31,10 @@ set updatetime=50
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
-" comment these out if i want to use horizon
 set colorcolumn=85
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 call plug#begin('~/.vim/plugged')
-
-Plug 'jremmen/vim-ripgrep'
 Plug 'tweekmonster/gofmt.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-utils/vim-man'
@@ -54,6 +51,8 @@ Plug 'wakatime/vim-wakatime'
 Plug 'hugolgst/vimsence'
 Plug 'HansPinckaers/ncm2-jedi'
 Plug 'davidhalter/jedi-vim'
+Plug 'tek256/simple-dark'
+Plug 'dracula/vim'
 call plug#end()
 
 let g:go_fmt_command = "goimports"
@@ -72,7 +71,6 @@ let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
 let g:go_highlight_variable_declarations = 1
 let g:go_highlight_variable_assignments = 1
-
 let ncm2#popup_delay = 5
 let ncm2#complete_length = [[1, 1]]
 let g:ncm2#matcher = 'substrfuzzy'
@@ -91,7 +89,9 @@ if exists('+termguicolors')
 endif
 let g:gruvbox_invert_selection='0'
 
-colorscheme gruvbox
+" colorscheme gruvbox
+" colorscheme simple-dark
+colorscheme dracula
 set background=dark
 
 let g:lightline = {
@@ -122,12 +122,19 @@ nnoremap <Leader>pf :Files<CR>
 nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
 nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
-nnoremap <Leader>ee oif err != nil {<CR>log.Fatalf("%+v\n", err)<CR>}<CR><esc>kkI<esc>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 vnoremap X "_d
 inoremap <C-c> <esc>
 
+nnoremap <silent> K :call <SID>show_documentation()<CR>'
+function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+      else
+        call CocAction('doHover');
+    endif
+endfunction
 
 function! s:check_back_space() abort
     let col = col('.') - 1
