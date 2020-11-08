@@ -53,6 +53,7 @@ Plug 'HansPinckaers/ncm2-jedi'
 Plug 'davidhalter/jedi-vim'
 Plug 'tek256/simple-dark'
 Plug 'dracula/vim'
+Plug 'fatih/vim-go'
 call plug#end()
 
 let g:go_fmt_command = "goimports"
@@ -71,6 +72,8 @@ let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
 let g:go_highlight_variable_declarations = 1
 let g:go_highlight_variable_assignments = 1
+" let g:go_def_mode='gopls'
+" let g:go_info_mode='gopls'
 let ncm2#popup_delay = 5
 let ncm2#complete_length = [[1, 1]]
 let g:ncm2#matcher = 'substrfuzzy'
@@ -91,8 +94,11 @@ let g:gruvbox_invert_selection='0'
 
 " colorscheme gruvbox
 " colorscheme simple-dark
-colorscheme dracula
-set background=dark
+" colorscheme dracula
+colorscheme ayu
+hi! Normal ctermbg=NONE guibg=NONE
+hi! NonText ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE
+" set background=dark
 
 let g:lightline = {
       \ 'colorscheme': 'monokai_pro',
@@ -168,4 +174,4 @@ endfun
 
 autocmd BufWritePre * :call TrimWhitespace()
 
-autocmd FileType js,py,ts,cpp,cxx,h,hpp,c :call GoCoc()
+autocmd FileType js,ts,cpp,cxx,h,hpp,c :call GoCoc()
