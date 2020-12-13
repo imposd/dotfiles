@@ -30,11 +30,13 @@ call plug#begin('~/.vim/plugged')
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 "" Themes
-Plug 'flazz/vim-colorschemes'
+" Plug 'flazz/vim-colorschemes'
 Plug 'ntk148v/vim-horizon'
 Plug 'sainnhe/gruvbox-material'
-Plug 'chriskempson/base16-vim'
-Plug 'phanviet/vim-monokai-pro'
+" Plug 'chriskempson/base16-vim'
+" Plug 'phanviet/vim-monokai-pro'
+" Plug 'joshdick/onedark.vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 """ Utilities
 Plug 'preservim/nerdcommenter'
@@ -68,10 +70,10 @@ endif
 
 let g:gruvbox_invert_selection='0'
 
-colorscheme ayu
+colorscheme dracula
 
-highlight Normal cterm=NONE gui=NONE ctermbg=233 ctermfg=252 guibg=NONE guifg=NONE
-highlight Pmenu cterm=NONE gui=NONE ctermbg=233 ctermfg=252 guifg=#ffffff guibg=#4f4f4f
+" highlight Normal cterm=NONE gui=NONE ctermbg=233 ctermfg=252 guibg=NONE guifg=NONE
+" highlight Pmenu cterm=NONE gui=NONE ctermbg=233 ctermfg=252 guifg=#ffffff guibg=#4f4f4f
 
 "'' Definitions ''"
 let loaded_matchparen = 1
@@ -87,6 +89,16 @@ nmap <leader>h :wincmd h<CR>
 nmap <leader>j :wincmd j<CR>
 nmap <leader>k :wincmd k<CR>
 nmap <leader>l :wincmd l<CR>
+
+if filereadable(expand("~/.vim/plugged/coc.nvim/plugin/coc.vim"))
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+      \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 func GoCoC()
   :CocEnable
@@ -106,6 +118,21 @@ func GoCoC()
   nnoremap <buffer> <leader>cr :CocRestart
 endfun
 
+nnoremap <silent> L :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+      execute 'h '.expand('<cword>')
+    elseif (coc#rpc#ready())
+      call CocActionAsync('doHover')
+    else
+      execute '!' . &keywordprg . " " . expand('<cword>')
+    endif
+endfunction
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
+nmap <leader>rn <Plug>(coc-rename)
+
 fun! TrimWhitespace()
   let l:save = winsaveview()
   keeppatterns %s/\s\+$//e
@@ -115,11 +142,13 @@ endfun
 autocmd BufWritePre * :call TrimWhitespace()
 
 autocmd FileType js,ts,graphql :call GoCoc()
+endif
 
 
 "'' Floatterm ''"
 if filereadable(expand("~/.vim/plugged/vim-floaterm/plugin/floaterm.vim"))
-  nnoremap <leader>fr :FloatermNew ranger<CR>
+  nnoremap <leader>fr :FloatermNew<CR>
+  nnoremap <leader>ft :FloatermNew --wintype=floating --autoclose=2<CR>
 endif
 
 
@@ -131,7 +160,7 @@ endif
 
 "'' Lightline ''"
 if filereadable(expand("~/.vim/plugged/lightline.vim/plugin/lightline.vim"))
-  let g:lightline = {'colorscheme' : 'monokai_pro'}
+  let g:lightline = {'colorscheme' : 'dracula'}
 endif
 
 
