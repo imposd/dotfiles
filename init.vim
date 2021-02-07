@@ -141,7 +141,7 @@ endfun
 
 autocmd BufWritePre * :call TrimWhitespace()
 
-autocmd FileType js,ts,graphql :call GoCoc()
+autocmd FileType js,ts,graphql,rs :call GoCoc()
 endif
 
 
@@ -170,7 +170,7 @@ if filereadable(expand("~/.vim/plugged/vim-prettier/plugin/prettier.vim"))
   let g:prettier#config#jsx_bracket_same_line = 'false'
   let g:prettier#autoformat = 0
 
-  autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.py PrettierAsync
+  autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.py,*.rs PrettierAsync
 endif
 
 
