@@ -30,13 +30,15 @@ call plug#begin('~/.vim/plugged')
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 "" Themes
-" Plug 'flazz/vim-colorschemes'
-Plug 'ntk148v/vim-horizon'
-Plug 'sainnhe/gruvbox-material'
+"Plug 'flazz/vim-colorschemes'
+" Plug 'ntk148v/vim-horizon'
+" Plug 'sainnhe/gruvbox-material'
+Plug 'gruvbox-community/gruvbox'
 " Plug 'chriskempson/base16-vim'
 " Plug 'phanviet/vim-monokai-pro'
 " Plug 'joshdick/onedark.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
+" Plug 'ghifarit53/tokyonight-vim'
 
 """ Utilities
 Plug 'preservim/nerdcommenter'
@@ -70,10 +72,13 @@ endif
 
 let g:gruvbox_invert_selection='0'
 
-colorscheme dracula
+" let g:tokyonight_style = 'night'
+" let g:tokyonight_enable_italic = 1
 
-" highlight Normal cterm=NONE gui=NONE ctermbg=233 ctermfg=252 guibg=NONE guifg=NONE
-" highlight Pmenu cterm=NONE gui=NONE ctermbg=233 ctermfg=252 guifg=#ffffff guibg=#4f4f4f
+colorscheme gruvbox
+
+highlight Normal cterm=NONE gui=NONE ctermbg=233 ctermfg=252 guibg=NONE guifg=NONE
+highlight Pmenu cterm=NONE gui=NONE ctermbg=233 ctermfg=252 guifg=#ffffff guibg=#4f4f4f
 
 "'' Definitions ''"
 let loaded_matchparen = 1
@@ -89,6 +94,9 @@ nmap <leader>h :wincmd h<CR>
 nmap <leader>j :wincmd j<CR>
 nmap <leader>k :wincmd k<CR>
 nmap <leader>l :wincmd l<CR>
+nnoremap <Leader>+ :vertical resize +5<CR>
+nnoremap <Leader>- :vertical resize -5<CR>
+nnoremap <leader>pv :Vex!<CR>
 
 if filereadable(expand("~/.vim/plugged/coc.nvim/plugin/coc.vim"))
 if has('nvim')
@@ -160,7 +168,7 @@ endif
 
 "'' Lightline ''"
 if filereadable(expand("~/.vim/plugged/lightline.vim/plugin/lightline.vim"))
-  let g:lightline = {'colorscheme' : 'dracula'}
+  let g:lightline = {'colorscheme' : 'gruvbox'}
 endif
 
 
@@ -170,7 +178,7 @@ if filereadable(expand("~/.vim/plugged/vim-prettier/plugin/prettier.vim"))
   let g:prettier#config#jsx_bracket_same_line = 'false'
   let g:prettier#autoformat = 0
 
-  autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.py,*.rs PrettierAsync
+  autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.py PrettierAsync
 endif
 
 
