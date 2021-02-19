@@ -56,26 +56,3 @@ export PATH=$PATH:$GOPATH
 export PATH=$PATH:$GOROOT/bin
 
 source ~/.profile
-
-echo "export PATH=\"$(pwd)/git-fuzzy/bin:\$PATH\"" >> ~/.zshrc
-export PATH="$HOME/git-fuzzy/bin:$PATH"
-export PATH="$HOME/git-fuzzy/bin:$PATH"
-export PATH="$HOME/Dev/pebblo/frontend/git-fuzzy/bin:$PATH"
-export PATH="$HOME/Dev/pebblo/frontend/git-fuzzy/bin:$PATH"
-export PATH="$HOME/git-fuzzy/bin:$PATH"
-export PATH="$HOME/git-fuzzy/bin:$PATH"
-export PATH="$HOME/git-fuzzy/bin:$PATH"
-export PATH="$HOME/git-fuzzy/bin:$PATH"
-export PATH="$HOME/git-fuzzy/bin:$PATH"
-export PATH="$HOME/git-fuzzy/bin:$PATH"
-export PATH="$HOME/Dev/git-fuzzy/bin:$PATH"
-export PATH="$HOME/git-fuzzy/bin:$PATH"
-export PATH="$HOME/git-fuzzy/bin:$PATH"
-export PATH="$HOME/Dev/harpoon/git-fuzzy/bin:$PATH"
-export PATH="$HOME/Dev/harpoon/git-fuzzy/bin:$PATH"
-export PATH="$HOME/Dev/harpoon/git-fuzzy/bin:$PATH"
-export PATH="$HOME/git-fuzzy/bin:$PATH"
-export PATH="/home/kyle/Dev/harpoon/git-fuzzy/bin:$PATH"
-export PATH="/home/kyle/Dev/harpoon/git-fuzzy/bin:$PATH"
-export PATH="/home/kyle/Dev/harpoon/git-fuzzy/bin:$PATH"
-export PATH="/home/kyle/Dev/harpoon/git-fuzzy/bin:$PATH"
