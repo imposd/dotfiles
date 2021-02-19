@@ -1,4 +1,5 @@
 export ZSH="$HOME/.oh-my-zsh"
+export TERM="xterm-256color"
 
 ZSH_THEME="af-magic"
 
@@ -12,7 +13,15 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+# navigation
+alias ..="cd ../"
+alias ...="cd ../.."
+alias .3="cd ../../../"
+alias .4="cd ../../../../"
+alias .5="cd ../../../../../"
+
 alias vim="nvim"
+alias vi="nvim"
 alias cls="clear"
 alias lg="lazygit"
 alias tt="nvim $TMUX_CONF"
@@ -23,9 +32,50 @@ alias ks="tmux kill-session -t 0"
 alias ala="nvim $CONFIG/alacritty/alacritty.yml"
 alias vimrc="nvim $VIMRC"
 alias vps="ssh root@$VPSIP"
+alias sails="ssh root@$SAILS"
+alias ooo="vim ~/NOTES"
+alias cat="bat"
+alias rc="nvim $VIMRC"
+
+# pacman and yay
+alias unlock="sudo rm /var/lib/pacman/db.lck"
+alias cleanup="sudo pacman -Rns $(pacman -Qtdq)"
+alias pacman="sudo pacman"
+
+# change ls to exa
+alias ll="exa -al --color=always --group-directories-first"
+alias la="exa -a --color=always --group-directories-first"
+alias ls="exa -l --color=always --group-directories-first"
+alias lt="exa -aT --color=always --group-directories-first"
+alias l.='exa -a | egrep "^\."'
 
 export GOPATH=$HOME/golang
 export GOROOT=$HOME/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOPATH
 export PATH=$PATH:$GOROOT/bin
+
+source ~/.profile
+
+echo "export PATH=\"$(pwd)/git-fuzzy/bin:\$PATH\"" >> ~/.zshrc
+export PATH="$HOME/git-fuzzy/bin:$PATH"
+export PATH="$HOME/git-fuzzy/bin:$PATH"
+export PATH="$HOME/Dev/pebblo/frontend/git-fuzzy/bin:$PATH"
+export PATH="$HOME/Dev/pebblo/frontend/git-fuzzy/bin:$PATH"
+export PATH="$HOME/git-fuzzy/bin:$PATH"
+export PATH="$HOME/git-fuzzy/bin:$PATH"
+export PATH="$HOME/git-fuzzy/bin:$PATH"
+export PATH="$HOME/git-fuzzy/bin:$PATH"
+export PATH="$HOME/git-fuzzy/bin:$PATH"
+export PATH="$HOME/git-fuzzy/bin:$PATH"
+export PATH="$HOME/Dev/git-fuzzy/bin:$PATH"
+export PATH="$HOME/git-fuzzy/bin:$PATH"
+export PATH="$HOME/git-fuzzy/bin:$PATH"
+export PATH="$HOME/Dev/harpoon/git-fuzzy/bin:$PATH"
+export PATH="$HOME/Dev/harpoon/git-fuzzy/bin:$PATH"
+export PATH="$HOME/Dev/harpoon/git-fuzzy/bin:$PATH"
+export PATH="$HOME/git-fuzzy/bin:$PATH"
+export PATH="/home/kyle/Dev/harpoon/git-fuzzy/bin:$PATH"
+export PATH="/home/kyle/Dev/harpoon/git-fuzzy/bin:$PATH"
+export PATH="/home/kyle/Dev/harpoon/git-fuzzy/bin:$PATH"
+export PATH="/home/kyle/Dev/harpoon/git-fuzzy/bin:$PATH"

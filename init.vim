@@ -30,11 +30,11 @@ call plug#begin('~/.vim/plugged')
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 "" Themes
-"Plug 'flazz/vim-colorschemes'
+Plug 'flazz/vim-colorschemes'
 " Plug 'ntk148v/vim-horizon'
 " Plug 'sainnhe/gruvbox-material'
 Plug 'gruvbox-community/gruvbox'
-" Plug 'chriskempson/base16-vim'
+Plug 'chriskempson/base16-vim'
 " Plug 'phanviet/vim-monokai-pro'
 " Plug 'joshdick/onedark.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
@@ -57,6 +57,10 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/telescope.nvim'
+
+" Treesitter
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
 
 call plug#end()
 "'' END PLUG ''"
