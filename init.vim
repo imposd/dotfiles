@@ -39,6 +39,7 @@ Plug 'chriskempson/base16-vim'
 " Plug 'joshdick/onedark.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 " Plug 'ghifarit53/tokyonight-vim'
+Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 
 """ Utilities
 Plug 'preservim/nerdcommenter'
@@ -48,7 +49,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdcommenter'
 
 " Lightline
-Plug 'itchyny/lightline.vim'
+"Plug 'itchyny/lightline.vim'
 
 " Prettier
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
@@ -79,7 +80,8 @@ let g:gruvbox_invert_selection='0'
 " let g:tokyonight_style = 'night'
 " let g:tokyonight_enable_italic = 1
 
-colorscheme gruvbox
+" colorscheme gruvbox
+colorscheme challenger_deep
 
 highlight Normal cterm=NONE gui=NONE ctermbg=233 ctermfg=252 guibg=NONE guifg=NONE
 highlight Pmenu cterm=NONE gui=NONE ctermbg=233 ctermfg=252 guifg=#ffffff guibg=#4f4f4f
@@ -91,7 +93,7 @@ let g:netrw_browse_split = 2
 let g:vrfr_rg = 'true'
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
-
+highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 
 "'' VIM Keymaps ''"
 nmap <leader>h :wincmd h<CR>
@@ -153,8 +155,28 @@ endfun
 
 autocmd BufWritePre * :call TrimWhitespace()
 
-autocmd FileType js,ts,graphql,rs :call GoCoc()
+autocmd FileType js,ts,graphql,gql,rs :call GoCoc()
 endif
+
+let s:hidden_all = 0
+function! ToggleHiddenAll()
+    if s:hidden_all  == 0
+        let s:hidden_all = 1
+        set noshowmode
+        set noruler
+        set laststatus=0
+        set noshowcmd
+    else
+        let s:hidden_all = 0
+        set showmode
+        set ruler
+        set laststatus=2
+        set showcmd
+    endif
+endfunction
+
+nnoremap <S-h> :call ToggleHiddenAll()<CR>
+
 
 
 "'' Floatterm ''"
@@ -172,7 +194,7 @@ endif
 
 "'' Lightline ''"
 if filereadable(expand("~/.vim/plugged/lightline.vim/plugin/lightline.vim"))
-  let g:lightline = {'colorscheme' : 'gruvbox'}
+  let g:lightline = {'colorscheme' : 'challenger_deep'}
 endif
 
 
