@@ -27,14 +27,11 @@ alias lg="lazygit"
 alias tt="nvim $TMUX_CONF"
 alias zz="nvim $ZSH_CONF"
 alias zs=". $ZSH_CONF"
-alias dev="cd $HOME/Dev"
-alias ks="tmux kill-session -t 0"
+alias dev="cd $HOME/Development"
+alias ks="tmux kill-server"
 alias ala="nvim $CONFIG/alacritty/alacritty.yml"
 alias vimrc="nvim $VIMRC"
-alias vps="ssh root@$VPSIP"
-alias sails="ssh root@$SAILS"
-alias ooo="vim ~/NOTES"
-alias cat="bat"
+#alias cat="bat"
 alias rc="nvim $VIMRC"
 
 # pacman and yay
@@ -43,11 +40,11 @@ alias cleanup="sudo pacman -Rns $(pacman -Qtdq)"
 alias pacman="sudo pacman"
 
 # change ls to exa
-alias ll="exa -al --color=always --group-directories-first"
-alias la="exa -a --color=always --group-directories-first"
-alias ls="exa -l --color=always --group-directories-first"
-alias lt="exa -aT --color=always --group-directories-first"
-alias l.='exa -a | egrep "^\."'
+#alias ll="exa -al --color=always --group-directories-first"
+#alias la="exa -a --color=always --group-directories-first"
+#alias ls="exa -l --color=always --group-directories-first"
+#alias lt="exa -aT --color=always --group-directories-first"
+#alias l.='exa -a | egrep "^\."'
 
 export GOPATH=$HOME/golang
 export GOROOT=$HOME/go
@@ -55,4 +52,3 @@ export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOPATH
 export PATH=$PATH:$GOROOT/bin
 
-source ~/.profile
