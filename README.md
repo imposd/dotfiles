@@ -2,10 +2,10 @@
 
 ## VIM
 
-![enter image description here](https://i.imgur.com/x0o3K1g.png)
+![enter image description here](https://i.imgur.com/z3NwtZg.png)
 
 ## ZSH
 
-![enter image description here](https://i.imgur.com/xdoz2I7.png)
+![enter image description here](https://i.imgur.com/5BCqVsY.png)
 
 Setup script coming soon!
