@@ -1,6 +1,8 @@
 export ZSH="$HOME/.oh-my-zsh"
 export TERM="xterm-256color"
 
+[[ $TMUX != "" ]] && export TERM="screen-256color"
+
 ZSH_THEME="af-magic"
 
 TMUX_CONF="$HOME/.tmux.conf"
@@ -46,9 +48,10 @@ alias pacman="sudo pacman"
 #alias lt="exa -aT --color=always --group-directories-first"
 #alias l.='exa -a | egrep "^\."'
 
-export GOPATH=$HOME/golang
-export GOROOT=$HOME/go
+export GOPATH=$HOME/Development/go
+export GOROOT=/usr/lib/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOPATH
 export PATH=$PATH:$GOROOT/bin
 
+eval "$(starship init zsh)"
