@@ -31,14 +31,9 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 "" Themes
 Plug 'flazz/vim-colorschemes'
-" Plug 'ntk148v/vim-horizon'
-" Plug 'sainnhe/gruvbox-material'
 Plug 'gruvbox-community/gruvbox'
 Plug 'chriskempson/base16-vim'
-" Plug 'phanviet/vim-monokai-pro'
-" Plug 'joshdick/onedark.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
-" Plug 'ghifarit53/tokyonight-vim'
 Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 
 """ Utilities
@@ -47,9 +42,7 @@ Plug 'voldikss/vim-floaterm'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdcommenter'
-
-" Lightline
-"Plug 'itchyny/lightline.vim'
+Plug 'ThePrimeagen/harpoon'
 
 " Prettier
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
@@ -77,10 +70,6 @@ endif
 
 let g:gruvbox_invert_selection='0'
 
-" let g:tokyonight_style = 'night'
-" let g:tokyonight_enable_italic = 1
-
-" colorscheme gruvbox
 colorscheme challenger_deep
 
 highlight Normal cterm=NONE gui=NONE ctermbg=233 ctermfg=252 guibg=NONE guifg=NONE
@@ -94,6 +83,7 @@ let g:vrfr_rg = 'true'
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+highlight clear CursorLineNR
 
 "'' VIM Keymaps ''"
 nmap <leader>h :wincmd h<CR>
@@ -103,6 +93,22 @@ nmap <leader>l :wincmd l<CR>
 nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
 nnoremap <leader>pv :Vex!<CR>
+
+"'' HARPOON KEYMAPS ''"
+nnoremap <C-m> :lua require("harpoon.mark").add_file()<CR>
+nnoremap <C-e> :lua require("harpoon.ui").toggle_quick_menu()<CR>
+nnoremap <C-h> :lua require("harpoon.ui").nav_file(1)<CR>
+nnoremap <C-t> :lua require("harpoon.ui").nav_file(2)<CR>
+nnoremap <C-n> :lua require("harpoon.ui").nav_file(3)<CR>
+nnoremap <C-s> :lua require("harpoon.ui").nav_file(4)<CR>
+nnoremap <C-g> :lua require("harpoon.mark").rm_file()<CR>
+nnoremap <leader><C-r> :lua require("harpoon.mark").shorten_list()<CR>
+nnoremap <leader><C-d> :lua require("harpoon.mark").clear_all()<CR>
+nnoremap <leader>r :lua require("harpoon.mark").promote()<CR>
+nnoremap <leader>tu :lua require("harpoon.term").gotoTerminal(1)<CR>
+nnoremap <leader>te :lua require("harpoon.term").gotoTerminal(2)<CR>
+nnoremap <leader>cu :lua require("harpoon.term").sendCommand(1, 1)<CR>
+nnoremap <leader>ce :lua require("harpoon.term").sendCommand(1, 2)<CR>
 
 if filereadable(expand("~/.vim/plugged/coc.nvim/plugin/coc.vim"))
 if has('nvim')
@@ -189,12 +195,6 @@ endif
 "'' Harpoon ''"
 if filereadable(expand("~/.vim/plugged/harpoon/plugin/harpoon.vim"))
   nmap <Leader>bf :call GotoBuffer(0)<CR>
-endif
-
-
-"'' Lightline ''"
-if filereadable(expand("~/.vim/plugged/lightline.vim/plugin/lightline.vim"))
-  let g:lightline = {'colorscheme' : 'challenger_deep'}
 endif
 
 
