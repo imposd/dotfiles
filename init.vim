@@ -28,6 +28,7 @@ set colorcolumn=85
 call plug#begin('~/.vim/plugged')
 "" Language Support
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 "" Themes
 Plug 'flazz/vim-colorschemes'
@@ -43,6 +44,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdcommenter'
 Plug 'ThePrimeagen/harpoon'
+Plug 'tpope/vim-fugitive'
 
 " Prettier
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
@@ -55,6 +57,8 @@ Plug 'nvim-lua/telescope.nvim'
 " Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
+
+
 
 call plug#end()
 "'' END PLUG ''"
@@ -85,6 +89,7 @@ let g:netrw_winsize = 25
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 highlight clear CursorLineNR
 
+
 "'' VIM Keymaps ''"
 nmap <leader>h :wincmd h<CR>
 nmap <leader>j :wincmd j<CR>
@@ -94,21 +99,6 @@ nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
 nnoremap <leader>pv :Vex!<CR>
 
-"'' HARPOON KEYMAPS ''"
-nnoremap <C-m> :lua require("harpoon.mark").add_file()<CR>
-nnoremap <C-e> :lua require("harpoon.ui").toggle_quick_menu()<CR>
-nnoremap <C-h> :lua require("harpoon.ui").nav_file(1)<CR>
-nnoremap <C-t> :lua require("harpoon.ui").nav_file(2)<CR>
-nnoremap <C-n> :lua require("harpoon.ui").nav_file(3)<CR>
-nnoremap <C-s> :lua require("harpoon.ui").nav_file(4)<CR>
-nnoremap <C-g> :lua require("harpoon.mark").rm_file()<CR>
-nnoremap <leader><C-r> :lua require("harpoon.mark").shorten_list()<CR>
-nnoremap <leader><C-d> :lua require("harpoon.mark").clear_all()<CR>
-nnoremap <leader>r :lua require("harpoon.mark").promote()<CR>
-nnoremap <leader>tu :lua require("harpoon.term").gotoTerminal(1)<CR>
-nnoremap <leader>te :lua require("harpoon.term").gotoTerminal(2)<CR>
-nnoremap <leader>cu :lua require("harpoon.term").sendCommand(1, 1)<CR>
-nnoremap <leader>ce :lua require("harpoon.term").sendCommand(1, 2)<CR>
 
 if filereadable(expand("~/.vim/plugged/coc.nvim/plugin/coc.vim"))
 if has('nvim')
@@ -183,6 +173,29 @@ endfunction
 
 nnoremap <S-h> :call ToggleHiddenAll()<CR>
 
+"'' Go ''"
+if filereadable(expand("~/.config/nvim/plugged/vim-go/plugin/go.vim"))
+  let g:go_code_completion_enabled = 0
+  let g:go_fmt_command = "goimports"
+  let g:go_gpls_enabled = 0
+  let g:go_doc_keywordprg_enabled = 0
+
+  let g:go_highlight_array_whitespace_error = 0
+  let g:go_highlight_chan_whitespace_error = 0
+  let g:go_highlight_extra_types = 0
+  let g:go_highlight_space_tab_error = 0
+  let g:go_highlight_trailing_whitespace_error = 0
+  let g:go_highlight_operators = 1
+  let g:go_highlight_functions = 1
+  let g:go_highlight_function_parameters = 1
+  let g:go_highlight_function_calls = 1
+  let g:go_highlight_types = 1
+  let g:go_highlight_fields = 1
+  let g:go_highlight_build_constraints = 1
+  let g:go_highlight_generate_tags = 1
+  let g:go_highlight_variable_declarations = 1
+  let g:go_highlight_variable_assignments = 1
+endif
 
 
 "'' Floatterm ''"
@@ -194,7 +207,20 @@ endif
 
 "'' Harpoon ''"
 if filereadable(expand("~/.vim/plugged/harpoon/plugin/harpoon.vim"))
-  nmap <Leader>bf :call GotoBuffer(0)<CR>
+  nnoremap <C-m> :lua require("harpoon.mark").add_file()<CR>
+  nnoremap <C-e> :lua require("harpoon.ui").toggle_quick_menu()<CR>
+  nnoremap <C-h> :lua require("harpoon.ui").nav_file(1)<CR>
+  nnoremap <C-t> :lua require("harpoon.ui").nav_file(2)<CR>
+  nnoremap <C-n> :lua require("harpoon.ui").nav_file(3)<CR>
+  nnoremap <C-s> :lua require("harpoon.ui").nav_file(4)<CR>
+  nnoremap <C-g> :lua require("harpoon.mark").rm_file()<CR>
+  nnoremap <leader><C-r> :lua require("harpoon.mark").shorten_list()<CR>
+  nnoremap <leader><C-d> :lua require("harpoon.mark").clear_all()<CR>
+  nnoremap <leader>r :lua require("harpoon.mark").promote()<CR>
+  nnoremap <leader>tu :lua require("harpoon.term").gotoTerminal(1)<CR>
+  nnoremap <leader>te :lua require("harpoon.term").gotoTerminal(2)<CR>
+  nnoremap <leader>cu :lua require("harpoon.term").sendCommand(1, 1)<CR>
+  nnoremap <leader>ce :lua require("harpoon.term").sendCommand(1, 2)<CR>
 endif
 
 

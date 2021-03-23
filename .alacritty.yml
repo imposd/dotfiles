@@ -32,27 +32,35 @@ colors:
 # BEGIN ACE
 colors:
   primary:
-    background: '#050A18'
-    foreground: '#c4cae7'
+    background: '#101116'
+    foreground: '#b7c6d7'
   cursor:
-    text:       '#050A18'
-    cursor:     '#c4cae7'
+    text:       '#101116'
+    cursor:     '#b7c6d7'
   normal:
-    black:      '#050A18'
-    red:        '#A06B7A'
-    green:      '#10398E'
-    yellow:     '#1D4CA3'
-    blue:       '#54709A'
-    magenta:    '#3D68D7'
-    cyan:       '#6B8ECB'
-    white:      '#c4cae7'
+    black:      '#101116'
+    red:        '#637B92'
+    green:      '#6E899E'
+    yellow:     '#7694AC'
+    blue:       '#7E9FC1'
+    magenta:    '#819EBC'
+    cyan:       '#85A9BE'
+    white:      '#b7c6d7'
   bright:
-    black:      '#898da1'
-    red:        '#A06B7A'
-    green:      '#10398E'
-    yellow:     '#1D4CA3'
-    blue:       '#54709A'
-    magenta:    '#3D68D7'
-    cyan:       '#6B8ECB'
-    white:      '#c4cae7'
+    black:      '#808a96'
+    red:        '#637B92'
+    green:      '#6E899E'
+    yellow:     '#7694AC'
+    blue:       '#7E9FC1'
+    magenta:    '#819EBC'
+    cyan:       '#85A9BE'
+    white:      '#b7c6d7'
 # END ACE
+    font:
+      normal:
+        family: MonoLisa
+key_bindings:
+    # (Windows, Linux, and BSD only)
+  - { key: V,         mods: Control|Shift, action: Paste                       }
+  - { key: C,         mods: Control|Shift, action: Copy                        }
+
