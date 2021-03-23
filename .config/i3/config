@@ -27,6 +27,8 @@ font pango:monospace 8
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # startup picom
 exec --no-startup-id picom -b
+# load monitor settings
+exec --no-startup-id $HOME/dotfiles/scripts/monitor.sh
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
