@@ -35,6 +35,7 @@ alias ala="nvim $CONFIG/alacritty/alacritty.yml"
 alias vimrc="nvim $VIMRC"
 #alias cat="bat"
 alias rc="nvim $VIMRC"
+alias tt="nvim $TMUX_CONF"
 
 # pacman and yay
 alias unlock="sudo rm /var/lib/pacman/db.lck"
