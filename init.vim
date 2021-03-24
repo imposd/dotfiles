@@ -27,7 +27,10 @@ set colorcolumn=85
 "'' START PLUG ''"
 call plug#begin('~/.vim/plugged')
 "" Language Support
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
+Plug 'tjdevries/nlua.nvim'
+Plug 'tjdevries/lsp_extensions.nvim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 "" Themes
@@ -88,6 +91,8 @@ let g:netrw_banner = 0
 let g:netrw_winsize = 25
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 highlight clear CursorLineNR
+set completeopt=menuone,noinsert,noselect
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
 
 "'' VIM Keymaps ''"
@@ -100,59 +105,6 @@ nnoremap <Leader>- :vertical resize -5<CR>
 nnoremap <leader>pv :Vex!<CR>
 
 
-if filereadable(expand("~/.vim/plugged/coc.nvim/plugin/coc.vim"))
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
-
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-      \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-func GoCoC()
-  :CocEnable
-  inoremap <buffer> <silent><expr> <TAB>
-              \ pumvisible() ? "\<C-n>" :
-              \ <SID>check_back_space() ? "\<TAB>" :
-              \ coc#refresh()
-
-  inoremap <buffer> <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-  inoremap <buffer> <silent><expr> <C-space> coc#refresh()
-
-  nmap <buffer> <leader>gd <Plug>(coc-definition)
-  nmap <buffer> <leader>gy <Plug>(coc-type-definition)
-  nmap <buffer> <leader>gi <Plug>(coc-implementation)
-  nmap <buffer> <leader>gr <Plug>(coc-references)
-  nmap <buffer> <leader>rr <Plug>(coc-rename)
-  nnoremap <buffer> <leader>cr :CocRestart
-endfun
-
-nnoremap <silent> L :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-    if (index(['vim','help'], &filetype) >= 0)
-      execute 'h '.expand('<cword>')
-    elseif (coc#rpc#ready())
-      call CocActionAsync('doHover')
-    else
-      execute '!' . &keywordprg . " " . expand('<cword>')
-    endif
-endfunction
-
-autocmd CursorHold * silent call CocActionAsync('highlight')
-nmap <leader>rn <Plug>(coc-rename)
-
-fun! TrimWhitespace()
-  let l:save = winsaveview()
-  keeppatterns %s/\s\+$//e
-  call winrestview(l:save)
-endfun
-
-autocmd BufWritePre * :call TrimWhitespace()
-
-autocmd FileType js,ts,graphql,gql,rs :call GoCoc()
-endif
 
 let s:hidden_all = 0
 function! ToggleHiddenAll()
@@ -197,6 +149,32 @@ if filereadable(expand("~/.config/nvim/plugged/vim-go/plugin/go.vim"))
   let g:go_highlight_variable_assignments = 1
 endif
 
+"'' NVIM LSP ''"
+if filereadable(expand("~/.vim/plugged/nvim-lspconfig/plugin/lspconfig.vim"))
+  lua require'lspconfig'.bashls.setup{ on_attach=require'completion'.on_attach }
+  lua require'lspconfig'.dockerls.setup{ on_attach=require'completion'.on_attach }
+  lua require'lspconfig'.gopls.setup{ on_attach=require'completion'.on_attach }
+  lua require'lspconfig'.html.setup{ on_attach=require'completion'.on_attach }
+  lua require'lspconfig'.jsonls.setup{ on_attach=require'completion'.on_attach }
+  lua require'lspconfig'.rust_analyzer.setup{ on_attach=require'completion'.on_attach }
+  lua require'lspconfig'.tsserver.setup{ on_attach=require'completion'.on_attach }
+  lua require'lspconfig'.vuels.setup{ on_attach=require'completion'.on_attach }
+
+  set completeopt=menuone,noinsert,noselect
+
+  autocmd BufWritePre *.go, lua vim.lsp.buf.formatting()
+
+  nnoremap <leader>vd :lua vim.lsp.buf.definition()<CR>
+  nnoremap <leader>vi :lua vim.lsp.buf.implementation()<CR>
+  nnoremap <leader>vsh :lua vim.lsp.buf.signature_help()<CR>
+  nnoremap <leader>vrr :lua vim.lsp.buf.references()<CR>
+  nnoremap <leader>vrn :lua vim.lsp.buf.rename()<CR>
+  nnoremap <S-l> :lua vim.lsp.buf.hover()<CR>
+  nnoremap <leader>vca :lua vim.lsp.buf.code_action()<CR>
+  nnoremap <leader>vsd :lua vim.lsp.util.show_line_diagnostics(); vim.lsp.util.show_line_diagnostics()<CR>
+  nnoremap <leader>vn :lua vim.lsp.diagnostic.goto_next()<CR>
+  nnoremap <leader>vll :lua vim.lsp.diagnostic.set_loclist()<CR>
+endif
 
 "'' Floatterm ''"
 if filereadable(expand("~/.vim/plugged/vim-floaterm/plugin/floaterm.vim"))
