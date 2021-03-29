@@ -43,7 +43,6 @@ Plug 'preservim/nerdcommenter'
 Plug 'voldikss/vim-floaterm'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'preservim/nerdcommenter'
 Plug 'ThePrimeagen/harpoon'
 Plug 'tpope/vim-fugitive'
 
