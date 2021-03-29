@@ -1,4 +1,3 @@
-"'' VIM PRE-PLUG ''"
 syntax on
 set guicursor=
 set noshowmatch
@@ -49,27 +48,20 @@ Plug 'preservim/nerdcommenter'
 Plug 'ThePrimeagen/harpoon'
 Plug 'tpope/vim-fugitive'
 
-" Prettier
+"" Prettier
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
-" Telescope
+"" Telescope
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/telescope.nvim'
 
-" Treesitter
+"" Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 
-" ThePrimeagen 
-Plug 'ThePrimeagen/neovim-irc-ui'
-
 call plug#end()
-"'' END PLUG ''"
 
-
-"'' VIM POST-PLUG ''"
-"This executes the command silently and ignores errors
 let g:gruvbox_contrast_dark = 'hard'
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
