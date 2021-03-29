@@ -87,7 +87,7 @@ set completeopt=menuone,noinsert,noselect
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
 
-"'' VIM Keymaps ''"
+"'' Keymaps ''"
 nmap <leader>h :wincmd h<CR>
 nmap <leader>j :wincmd j<CR>
 nmap <leader>k :wincmd k<CR>
@@ -95,7 +95,6 @@ nmap <leader>l :wincmd l<CR>
 nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
 nnoremap <leader>pv :Vex!<CR>
-
 
 
 let s:hidden_all = 0
