@@ -23,7 +23,6 @@ set updatetime=50
 set shortmess+=c
 set colorcolumn=85
 
-"'' START PLUG ''"
 call plug#begin('~/.vim/plugged')
 "" Language Support
 Plug 'neovim/nvim-lspconfig'
