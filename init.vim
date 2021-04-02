@@ -1,3 +1,4 @@
+"'' VIM PRE-PLUG ''"
 syntax on
 set guicursor=
 set noshowmatch
@@ -23,6 +24,7 @@ set updatetime=50
 set shortmess+=c
 set colorcolumn=85
 
+"'' START PLUG ''"
 call plug#begin('~/.vim/plugged')
 "" Language Support
 Plug 'neovim/nvim-lspconfig'
@@ -43,23 +45,32 @@ Plug 'preservim/nerdcommenter'
 Plug 'voldikss/vim-floaterm'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'ThePrimeagen/harpoon'
 Plug 'tpope/vim-fugitive'
 
-"" Prettier
+" Prettier
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
-"" Telescope
+" Telescope
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/telescope.nvim'
 
-"" Treesitter
+" Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 
-call plug#end()
+" ThePrimeagen 
+Plug 'ThePrimeagen/neovim-irc-ui'
+Plug 'ThePrimeagen/harpoon'
 
+" Discord RPC
+Plug 'ObserverOfTime/discord.nvim', {'do': ':UpdateRemotePlugins'}
+call plug#end()
+"'' END PLUG ''"
+
+
+"'' VIM POST-PLUG ''"
+"This executes the command silently and ignores errors
 let g:gruvbox_contrast_dark = 'hard'
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -86,7 +97,7 @@ set completeopt=menuone,noinsert,noselect
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
 
-"'' Keymaps ''"
+"'' VIM Keymaps ''"
 nmap <leader>h :wincmd h<CR>
 nmap <leader>j :wincmd j<CR>
 nmap <leader>k :wincmd k<CR>
@@ -94,6 +105,7 @@ nmap <leader>l :wincmd l<CR>
 nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
 nnoremap <leader>pv :Vex!<CR>
+
 
 
 let s:hidden_all = 0
@@ -153,15 +165,14 @@ if filereadable(expand("~/.vim/plugged/nvim-lspconfig/plugin/lspconfig.vim"))
 
   set completeopt=menuone,noinsert,noselect
 
-  autocmd BufWritePre *.go, lua, ts vim.lsp.buf.formatting()
+  autocmd BufWritePre *.go, lua, ts, ccls vim.lsp.buf.formatting()
 
   nnoremap <leader>vd :lua vim.lsp.buf.definition()<CR>
   nnoremap <leader>vi :lua vim.lsp.buf.implementation()<CR>
   nnoremap <leader>vsh :lua vim.lsp.buf.signature_help()<CR>
   nnoremap <leader>vrr :lua vim.lsp.buf.references()<CR>
-  nnoremap <leader>vrn :lua vim.lsp.buf.rename()<CR>
+  nnoremap <leader>rn :lua vim.lsp.buf.rename()<CR>
   nnoremap <S-l> :lua vim.lsp.buf.hover()<CR>
-  nnoremap <leader>vca :lua vim.lsp.buf.code_action()<CR>
   nnoremap <leader>vsd :lua vim.lsp.util.show_line_diagnostics(); vim.lsp.util.show_line_diagnostics()<CR>
   nnoremap <leader>vn :lua vim.lsp.diagnostic.goto_next()<CR>
   nnoremap <leader>vll :lua vim.lsp.diagnostic.set_loclist()<CR>

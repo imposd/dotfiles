@@ -5,11 +5,12 @@ export TERM="xterm-256color"
 
 ZSH_THEME="af-magic"
 
-TMUX_CONF="$HOME/.tmux.conf"
-ZSH_CONF="$HOME/.zshrc"
+TMUX_CONF="$HOME/tmux/.tmux.conf"
+ZSH_CONF="$HOME/zsh/.zshrc"
 
 export CONFIG="$HOME/.config"
 export VIMRC="$CONFIG/nvim/init.vim"
+export EDITOR="nvim"
 
 plugins=(git)
 
@@ -43,11 +44,11 @@ alias cleanup="sudo pacman -Rns $(pacman -Qtdq)"
 alias pacman="sudo pacman"
 
 # change ls to exa
-#alias ll="exa -al --color=always --group-directories-first"
-#alias la="exa -a --color=always --group-directories-first"
-#alias ls="exa -l --color=always --group-directories-first"
-#alias lt="exa -aT --color=always --group-directories-first"
-#alias l.='exa -a | egrep "^\."'
+alias ll="exa -al --color=always --group-directories-first"
+alias la="exa -a --color=always --group-directories-first"
+alias ls="exa -l --color=always --group-directories-first"
+alias lt="exa -aT --color=always --group-directories-first"
+alias l.='exa -a | egrep "^\."'
 
 export GOPATH=$HOME/Development/go
 export GOROOT=/usr/lib/go
@@ -56,3 +57,4 @@ export PATH=$PATH:$GOPATH
 export PATH=$PATH:$GOROOT/bin
 
 eval "$(starship init zsh)"
+source ~/.profile
